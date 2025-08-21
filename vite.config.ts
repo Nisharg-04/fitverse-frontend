@@ -15,31 +15,42 @@ export default defineConfig(({ mode }) => ({
     react(),
     VitePWA({
       registerType: "autoUpdate",
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest}']
+      },
       devOptions: {
-    enabled: true  // 👈 allows service worker in dev mode
-  },
-      includeAssets: ["favicon.ico", "robots.txt", "apple-touch-icon.png"],
+        enabled: true
+      },
+      includeAssets: ["fitverse-logo.png", "robots.txt"],
       manifest: {
-        name: "FitVerse",
+        name: "FitVerse - Your Gym. Your Time. Your Way",
         short_name: "FitVerse",
-        description: "Your Gym. Your Time. Your Way.",
+        description: "Transform your fitness journey with FitVerse - the all-in-one platform for gym discovery, workout tracking, nutrition planning, and community support.",
         theme_color: "#000000",
         background_color: "#ffffff",
-         display: "standalone",   // 👈 must be standalone
-  orientation: "portrait", // optional, for mobile apps
-  scope: "/",              // 👈 must match your app’s base URL
-  start_url: "/",    
+        display: "standalone",
+        orientation: "portrait-primary",
+        scope: "/",
+        start_url: "/",
+        categories: ["health", "fitness", "lifestyle"],
+        lang: "en",
+        dir: "ltr",
         icons: [
           {
             src: "fitverse-logo.png",
             sizes: "192x192",
-            type: "image/png"
+            type: "image/png",
+            purpose: "any maskable"
           },
-         
+          {
+            src: "fitverse-logo-512.png", 
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable"
+          }
         ]
       }
-    })
-,
+    }),
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
