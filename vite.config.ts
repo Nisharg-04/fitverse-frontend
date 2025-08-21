@@ -43,7 +43,7 @@ export default defineConfig(({ mode }) => ({
             purpose: "any maskable"
           },
           {
-            src: "fitverse-logo.png", 
+            src: "fitverse-logo-512.png", 
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable"
